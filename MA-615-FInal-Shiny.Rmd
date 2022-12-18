@@ -1,0 +1,80 @@
+---
+title: "MA 615 FInal Shiny"
+author: "JingjianGao"
+date: "2022-11-30"
+output: html_document
+---
+
+```{r echo=TRUE, warning=FALSE,message=FALSE}
+library(shiny)
+library(shinythemes)
+library(maps)
+library(rgdal)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+Q2 <- read.csv("2022-Q2_HRTravelTimes.csv")
+week <- subset(Q2, service_date=="2022-04-01" | service_date=="2022-04-02" | service_date=="2022-04-03" | service_date=="2022-04-04" | service_date=="2022-04-05" | service_date=="2022-04-06" | service_date=="2022-04-07")
+
+```
+
+# ShinyApp
+
+## Ui
+```{r}
+
+ui <- navbarPage(windowTitle = "615 Final Shiny",
+                 tabPanel("Lines",
+                          fluidPage(
+                            titlePanel('Train_Lines'),
+                            plotOutput("Train_Lines", width=700,height=700)),
+                 ),
+                 tabPanel("Table",
+                          fluidPage(
+                            titlePanel("Stops table"),
+                            tableOutput("table"))),
+                 tabPanel("Map",
+                          fluidPage(
+                            titlePanel("Stops Map"),   
+                            plotOutput("stopmap")))
+)
+
+
+```
+
+## Server
+```{r}
+server <- function(input, output) {
+  output$Train_lines <- renderPlot({
+    ggplot()+
+      geom_polygon(data=weeks, aes(x=route_id, y=travel_time_sec))+
+      geom_point()
+  })
+  output$table <- renderDataTable({head(week)
+    
+  })
+  
+  output$stopmap <- renderPlot({
+    ggplot()+
+      geom_polygon(data=week,aes(x=from_stop_id, y=to_stop_id))+
+      geom_point()
+    
+    
+  })
+
+}
+
+
+
+```
+
+## Run
+```{r}
+shinyApp(ui = ui, server = server)
+
+
+
+```
+
+# I tried my best producing a shiny app but I didn't make it in the end. This app is not working properly.
+
