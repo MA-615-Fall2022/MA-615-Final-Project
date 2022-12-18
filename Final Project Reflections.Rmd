@@ -1,0 +1,14 @@
+---
+title: "Final Project Reflections"
+author: "JingjianGao"
+date: "2022-12-10"
+output: html_document
+---
+
+# Reflections
+
+### I have completed the EDA and the Shiny App. I came to a conclusion from the EDA that the general traveling time between each stop for red line is the longest, then it's orange line, and finally, the blue line. Though I would doubt myself whether the graphs and results I got were worth exploring. The EDA didn't quite answer the question of whether the MBTA service is reliable or not. There are a lot of observations in the data. However, there are not many columns to compare. Even though we have the from_stop_id and to_stop_id, they are not useful when developing the shiny app. It was a great process trying to find the data we want. For next step, I am going to scrape more data from the website and try to do another EDA which will eventually answer the question of how reliable is the MBTA Service.
+
+### For the Shiny App, I tried putting everything into the right place. It was not hard developing the Ui, nor the server. However, I had many problems while using the right functions. I also have the problem of not be able to get the necessary data for the stop map. I also couldn't make the comparison when there are way too many factors to consider. I was not in charge of the coding part for the shiny assignment so I struggled a lot for this assignment. I will try to master everything about Shiny. The learning process never ends.
+
+
